@@ -1,0 +1,70 @@
+Level 2 → Level 3
+
+Objective
+Retrieve the password from a file with spaces and special characters in its name.
+
+Key Concept
+Handling filenames that include spaces and begin with characters interpreted as command options.
+
+This level focuses on:
+- Understanding how spaces affect command arguments
+- Preventing option parsing conflicts in commands
+- Properly referencing complex filenames
+
+Commands Used
+ls
+ls -al
+cat "--spaces in this filename--"
+cat -- "--spaces in this filename--"
+cat "./--spaces in this filename--"
+
+Step-by-Step Breakdown
+
+1. Enumerate directory contents
+
+ls
+- Identified a file named "--spaces in this filename--"
+
+ls -al
+- Confirmed file exists and has read permissions
+
+2. Attempt to read file using quotes
+
+cat "--spaces in this filename--"
+
+- Command failed
+- Even with quotes, filename begins with "--"
+- cat interpreted it as a long option instead of a file
+
+3. Correct approach using option terminator
+
+cat -- "--spaces in this filename--"
+
+- "--" stops option parsing
+- Filename is treated as a literal argument
+- Successfully retrieved password
+
+4. Alternative approach using explicit path
+
+cat "./--spaces in this filename--"
+
+- Prefixing with "./" forces interpretation as a file path
+- Avoids option parsing issues
+- Successfully retrieved password
+
+Analysis / Takeaways
+
+- Quotes handle spaces but do NOT prevent option parsing
+- Filenames beginning with "-" or "--" can break commands
+- "--" is a universal way to stop option parsing
+
+Alternative Approaches
+
+- Using tab completion to avoid manual typing errors
+- Escaping spaces using backslashes (less reliable in this case)
+
+Real-World Relevance
+
+- Poorly sanitized filenames can break scripts and automation tools
+- Attackers may craft filenames to exploit improper argument handling
+- Understanding command parsing is critical for secure scripting

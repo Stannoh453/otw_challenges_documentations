@@ -1,0 +1,62 @@
+Level 1 → Level 2
+
+Objective
+Retrieve the password stored in a file with a non-standard filename.
+
+Key Concept
+Handling filenames that conflict with command-line option parsing.
+
+This level focuses on:
+- Understanding shell expansion (*)
+- Dealing with filenames that begin with special characters (e.g., '-')
+- Preventing commands from misinterpreting filenames as flags
+
+Commands Used
+ls
+ls -al
+cat *
+cat ./-
+
+Step-by-Step Breakdown
+
+1. Enumerate directory contents
+
+ls
+- Found a file named "-"
+
+ls -al
+- Confirmed "-" is a regular file with readable permissions
+
+2. Attempt to read file using wildcard
+
+cat *
+
+- Shell expanded "*" to "-"
+- Command became: cat -
+- cat interpreted "-" as stdin (keyboard input)
+- Command waited for input instead of reading file
+
+3. Correctly reference the file
+
+cat ./-
+
+- Explicitly specified the file path
+- Prevented misinterpretation as an option
+- Successfully retrieved the password
+
+Analysis / Takeaways
+
+- Filenames starting with "-" can be interpreted as command options
+- Shell expansion can unintentionally alter command behavior
+- Always verify how inputs are interpreted by the command
+
+Alternative Approaches
+
+cat -- -
+- Stops option parsing and treats "-" as a filename
+
+Real-World Relevance
+
+- Attackers may exploit poorly handled filenames to manipulate scripts
+- Misconfigured scripts can break when encountering unexpected file names
+- Understanding shell behavior is critical for both offense and defense

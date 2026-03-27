@@ -1,0 +1,10 @@
+# Ignore all OTW password files
+level*pass
+
+# Ignore temporary files
+*.swp
+*.tmp
+
+# Ignore Python cache
+__pycache__/
+*.pyc
