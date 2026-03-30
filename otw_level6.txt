@@ -1,0 +1,40 @@
+Level 5 → Level 6
+Objective
+
+Retrieve the password hidden in a file within multiple subdirectories, using file size as the identifying attribute.
+
+Key Concept
+
+Using find to locate files based on size and type.
+
+This level tests:
+
+Navigating multiple subdirectories
+Efficiently identifying the target file without opening every file manually
+Understanding how find interprets file size units (c for bytes)
+Commands Used
+ls
+cd inhere
+ls
+find . -type f -size 1033c
+cat ./maybehere07/.file2
+Step-by-Step Explanation
+
+List the directories
+
+ls
+Identified 20 subdirectories: maybehere00 → maybehere19
+
+Search for files of a specific size
+
+find . -type f -size 1033c
+-type f → restricts search to files
+-size 1033c → filters files exactly 1033 bytes (c = bytes)
+This returned a single file: ./maybehere07/.file2
+
+Read the file
+
+cat ./maybehere07/.file2
+Extracted the password successfully
+
+⚠️ Important note: using -size 1033 without c would fail because find defaults to blocks, not bytes.

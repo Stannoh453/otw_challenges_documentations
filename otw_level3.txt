@@ -1,0 +1,51 @@
+Level 2 → Level 3
+Objective
+
+Retrieve the password stored in a file with spaces in its name.
+
+Key Concept
+
+Handling filenames that contain spaces or special characters in Linux.
+
+This level tests:
+
+Understanding of shell parsing rules
+Proper escaping of spaces in filenames
+Awareness that certain characters can break standard command usage
+Commands Used
+ls -al
+cat ./--spaces\ in\ this\ filename--
+Step-by-Step Explanation
+
+List directory contents with details
+
+ls -al
+Identified a file with spaces in its name: --spaces in this filename--
+Noticed that using cat -- -- returned help text, because -- was interpreted as an option, not a file
+
+Read the file safely
+
+cat ./--spaces\ in\ this\ filename--
+Used ./ to indicate the current directory
+Escaped spaces with backslashes (\) so the shell interprets them literally
+This allowed the command to correctly read the file contents
+Outcome
+
+Password successfully retrieved:
+
+MNk8KNH3Usiio41PRUEoDFPqfxLPlSmx
+What I Learned
+Spaces in filenames break standard command usage if not escaped
+Prefixing with ./ ensures the filename is treated as literal, not as an option
+Escaping spaces or using quotes is essential for robust shell commands
+Real-World Relevance
+
+In production environments:
+
+Filenames with spaces or special characters are common, especially in logs or user uploads
+Scripts that fail to handle these characters are vulnerable to breaking or misprocessing
+Understanding proper escaping prevents errors and potential security issues
+Mitigation
+Avoid spaces in filenames in automated systems
+Always handle edge cases in scripts (escape spaces or wrap filenames in quotes)
+Consider -- for commands to signal the end of options, e.g., cat -- "filename with spaces"

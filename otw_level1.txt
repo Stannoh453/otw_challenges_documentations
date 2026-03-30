@@ -1,0 +1,51 @@
+Objective
+
+Retrieve the password for the next level from a file in the home directory after logging into the system.
+
+Key Concept
+
+Basic file enumeration and content retrieval in Linux.
+
+This level verifies:
+
+Ability to navigate a system after access
+Awareness that sensitive data may be stored in plain text
+Commands Used
+ls
+cat readme
+Step-by-Step Explanation
+
+Listed files in the home directory:
+
+ls
+
+This revealed a file named readme.
+
+Viewed the contents of the file:
+
+cat readme
+
+The file contained text instructions along with the password for the next level.
+
+Outcome
+
+Password successfully retrieved from the file.
+
+What I Learned
+Initial access does not mean exploitation is complete; enumeration is always the first step.
+Sensitive information is often exposed in obvious locations.
+Simple commands are powerful when used with intent.
+Real-World Relevance
+
+In real systems, credentials are often left in plaintext files such as:
+
+README files
+configuration files
+backup files
+
+Attackers typically begin by checking these locations before attempting complex exploits.
+
+Mitigation
+Avoid storing credentials in plaintext
+Restrict file permissions
+Use secure storage mechanisms (environment variables, vaults)

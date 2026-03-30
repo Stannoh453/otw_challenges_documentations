@@ -1,0 +1,43 @@
+Level 3 → Level 4
+Objective
+
+Retrieve the password from a file hidden among misleading filenames in a subdirectory.
+
+Key Concept
+
+Dealing with hidden or misleading file names in Linux.
+
+This level tests:
+
+Awareness of non-obvious filenames (like ...Hiding-From-You)
+Safe referencing of unusual filenames
+Proper navigation into subdirectories
+Commands Used
+ls
+cd inhere
+ls -al
+cat ./...Hiding-From-You
+Step-by-Step Explanation
+
+List top-level directory
+
+ls
+Found a subdirectory named inhere
+Nothing else was obvious
+
+Navigate into subdirectory
+
+cd inhere
+Entered the directory where the target file is located
+
+Inspect directory contents with details
+
+ls -al
+Revealed a single file with a tricky name: ...Hiding-From-You
+Not a hidden file (doesn’t start with . for shell purposes) but visually misleading
+
+Read the file
+
+cat ./...Hiding-From-You
+Using ./ ensures the shell interprets the filename literally
+Extracted the password from the file

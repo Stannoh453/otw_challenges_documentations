@@ -1,0 +1,62 @@
+Level 1 → Level 2
+Objective
+
+Retrieve the password from a file with an unusual filename.
+
+Key Concept
+
+Handling special filenames in Linux (specifically filenames that interfere with command parsing).
+
+This level tests:
+
+Understanding how the shell interprets - as standard input or an option
+How to safely reference such files
+Commands Used
+ls
+ls -al
+cat ./-
+Step-by-Step Explanation
+
+Listed files in the directory:
+
+ls
+Found a file named -
+
+Inspected file details:
+
+ls -al
+Confirmed - is a regular file, not a directory or special device
+
+Attempted to read the file:
+
+cat -
+This would normally fail or hang because - is interpreted as stdin, not a filename
+
+Correctly referenced the file:
+
+cat ./-
+./ explicitly points to the current directory
+Forces the shell to treat - as a filename instead of an option or stdin
+Outcome
+
+Password successfully retrieved from the file.
+
+What I Learned
+Filenames can interfere with command behavior
+The shell interprets - as standard input by default
+Prefixing with ./ ensures the filename is treated literally
+Real-World Relevance
+
+This reflects situations where:
+
+Files are deliberately named to break scripts or confuse analysts
+Poorly written scripts fail when encountering edge-case filenames
+Attackers or defenders must handle inputs safely to avoid misinterpretation
+Mitigation
+Avoid ambiguous filenames in production systems
+
+Use -- to terminate command options when applicable
+Example:
+
+cat -- -
+Validate and sanitize filenames in scripts

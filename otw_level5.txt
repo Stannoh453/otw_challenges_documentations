@@ -1,0 +1,54 @@
+Objective
+
+Retrieve the password hidden in a file among multiple files in a directory, using file type to identify the correct one.
+
+Key Concept
+
+Using file to identify human-readable files among multiple unknown files.
+
+This level tests:
+
+Ability to enumerate files
+Understanding file types
+Efficient identification of the target file
+Commands Used
+ls
+cd inhere
+ls
+file ./*
+cat ./-file07
+Step-by-Step Explanation
+
+List directory contents
+
+ls
+Revealed 10 files with names -file00 to -file09
+
+Check the type of each file
+
+file ./*
+Most files were labeled data (binary or non-human-readable)
+One file, -file07, was identified as ASCII text
+
+Read the human-readable file
+
+cat ./-file07
+Used ./ prefix to ensure the filename was interpreted literally
+Extracted the password from the file
+Outcome
+
+Password successfully retrieved:
+
+4oQYVPkxZOOEOO5pTW81FB8j8lxXGUQw
+What I Learned
+Blindly opening files is inefficient and error-prone
+file is a critical tool for quickly identifying text versus binary data
+Prefixing filenames with ./ avoids misinterpretation of filenames starting with -
+Real-World Relevance
+Attackers often encounter directories full of files with unknown types
+Efficient enumeration saves time and reduces the chance of detection
+File type analysis is a standard technique in digital forensics and pentesting
+Mitigation
+Avoid storing sensitive files alongside unrelated data
+Use clear naming conventions and metadata to prevent accidental exposure
+Monitor file access to detect unusual enumeration activity
